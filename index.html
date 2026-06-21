@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Love</title>
+    <link rel="stylesheet" href="pic.css">
+    
+</head>
+<body>
+<div class="card">
+
+    <h1>❤️ Dear ANNAH ❤️</h1>
+
+    <div class="heart-frame">
+        <img src="myphoto.jpg" alt="Our Photo">
+    </div>
+
+    <p id="typing"></p>
+
+    <button onclick="openHeart()">
+        Open My Heart 💖
+    </button>
+
+    <div id="message">
+        🌹 You are my happiness, my peace and my favorite person. ❤️
+    </div>
+
+    <div id="countdown"></div>
+
+    <div id="letter">
+        💌 <br><br>
+        My Love,<br><br>
+
+        Thank you for being part of my life.<br>
+        Every smile from you brightens my day.<br>
+        Every moment with you becomes a beautiful memory.<br>
+        No matter where life takes us, I promise to cherish you and love you with all my heart.<br><br>
+
+        I Love You More Than Words Can Explain ❤️<br><br>
+
+        Forever Yours 🌹
+    </div>
+
+</div>
+
+<script>
+
+const text =
+"Every day with you feels special. Thank you for being my safe place, ANNAH ❤️";
+
+let i = 0;
+
+function typeWriter(){
+    if(i < text.length){
+        document.getElementById("typing").innerHTML += text.charAt(i);
+        i++;
+        setTimeout(typeWriter, 70);
+    }
+}
+
+typeWriter();
+
+function openHeart(){
+
+    document.getElementById("message").style.display = "block";
+    document.getElementById("letter").style.display = "block";
+
+    for(let i = 0; i < 100; i++){
+        createHeart();
+    }
+}
+
+function createHeart(){
+
+    const heart = document.createElement("div");
+
+    heart.classList.add("heart");
+    heart.innerHTML = "❤️";
+
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.fontSize = (20 + Math.random() * 30) + "px";
+
+    document.body.appendChild(heart);
+
+    setTimeout(() => {
+        heart.remove();
+    }, 6000);
+}
+
+setInterval(createHeart, 800);
+
+const startDate = new Date("2025-03-13");
+
+function updateCountdown(){
+
+    const now = new Date();
+    const diff = now - startDate;
+    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+
+    document.getElementById("countdown").innerHTML =
+    "❤️ Loving You For: " + days + " Days ❤️";
+}
+
+updateCountdown();
+setInterval(updateCountdown, 1000);
+
+</script>
+</body>
+</html>
